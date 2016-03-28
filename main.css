@@ -1,170 +1,193 @@
 body {
-	padding: 0;
-	margin: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .main_header {
-	display: block;
-	width: 125px;
-	margin: auto;
-	border: 2px solid #000;
-	display: none;
+    display: block;
+    display: none;
+
+    width: 125px;
+    margin: auto;
+
+    border: 2px solid #000;
 }
 
-.main_header > h1 { 
-	text-align: center;
+.main_header > h1 {
+    text-align: center;
 }
 
 .content {
-	display: flex;
-	justify-content:center;
+    display: flex;
+
+    justify-content: flex-start;
 }
 
 .show {
-	min-width: 20%;
-	margin-left:  5%;
+    min-width: 15%;
+    height: 100%;
+    margin-top: 16px;
+    margin-left: 5%;
 	position: relative;
-	height: 100%;
-	margin-top: 16px;
+    flex: 0 0 30%;
 }
 
 .show_wrapper {
-	padding: 10px;
+    padding: 10px;
 }
 
 .show_heading {
-	text-align: center;
-	word-wrap: break-word;
-	margin: 0;
+    margin: 0;
+
+    text-align: center;
+    word-wrap: break-word;
 }
 
 .show_img {
-	width: 100%;
-	height: 50%;
-	min-width: 120px;
+    display: block;
+
+    width: 50%;
+    min-width: 120px;
+    height: 50%;
+    margin: auto;
 }
 
 .row {
-	display: flex;
-	justify-content: flex-start;
-	flex-flow: row;
-	border: 2px solid #000;
+    display: flex;
+
+    border: 2px solid #000;
+
+    justify-content: flex-start;
+    flex-flow: row;
 }
 
 .row:nth-of-type(2n) {
-	border-bottom: 0;
-	border-top: 0;
+    border-top: 0;
+    border-bottom: 0;
 }
 
 .row > span {
-	text-align: center;
+    text-align: center;
 }
 
-.row > .key { 
-	flex: 0 1 70%;
-	border-right: 2px solid #000;
+.row > .key {
+    border-right: 2px solid #000;
+
+    flex: 0 1 70%;
 }
 
 .value::first-letter {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .row > .value {
-	flex: 0 1 30%;
-	max-width: 30%;
-	word-wrap: break-word;
+    max-width: 30%;
+
+    word-wrap: break-word;
+
+    flex: 0 1 30%;
 }
 
 .pokemon_list {
-	list-style: none;
-	display: flex;
-	justify-content: space-between;
-	flex-flow: row wrap;
-	width: 60%;
-	padding-left: 20px;
+    display: flex;
+
+    padding-left: 20px;
+
+    list-style: none;
+
+    flex: 0 0 50%;
+    justify-content: space-between;
+    flex-flow: row wrap;
 }
 
 .pokemon_list-item {
-	display: flex;
-	flex: 0 1 30%;
-	width: 30%;
-	min-width: 130px;
-	flex-flow: column;
-	background: pink;
-	margin-bottom: 20px;
+    display: flex;
+
+    min-width: 150px;
+    margin-right: 3%;
+    margin-bottom: 20px;
+
+    background: pink;
+
+    flex: 0 2 28%;
+    flex-flow: column;
 }
 
 
 
 .pokemon_item-img {
-	width: 120px;
-	min-width: 120px;
-	margin: 0 auto;
-	height: 120px;
+    width: 120px;
+    min-width: 120px;
+    height: 120px;
+    margin: 0 auto;
 }
 
 .pokemon_list-heading {
-	margin: 0 0 20px 0;
-	text-align: center;
+    margin: 0 0 20px 0;
+
+    text-align: center;
 }
 
 .pokemon_list-skills {
-	list-style: none;
-	display: flex;
-	flex-flow: row;
-	justify-content: flex-start;
-	padding-left: 15px;
-	margin-bottom: 15px;
+    display: flex;
+
+    margin-bottom: 15px;
+    padding-left: 15px;
+
+    list-style: none;
+
+    flex-flow: row;
+    justify-content: flex-start;
 }
 
 .pokemon_list-skills-item {
-	margin-right: 20px;
+    margin-right: 20px;
 }
 
 .pokemon_list-skills-item::first-letter {
-	text-transform: uppercase;
-}
-
-.next_page {
-	width: 50px;
-	height: 50px;
-	background: yellow;
+    text-transform: uppercase;
 }
 
 .loader_wrapper {
-	width: 75%;
-	padding-left: 20px;
+    width: 47%;
+    padding-left: 20px;
 }
 
 .loader {
-	display:block;
-	margin:auto;
+    display: block;
+
+    margin: auto;
 }
 
 .show_loader {
-	position: absolute;
-	bottom: -25%;
-	left: 30%;
+    position: absolute;
+    bottom: -150px;
+    right: 40%;
 }
 
 .nexp_page-wrapper {
-	width: 60%;
+    width: 60%;
 }
 
 .next_page {
-	display: flex;
-	margin-left: 8%;
-	width: 58%;
-	padding-left: 20px;
-	padding: 20px;
-	margin-bottom: 20px;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	border-radius: 20px;
-	text-decoration: none;
-	background: blue;
-	color: #fff;
-	font-size: 2em;
-	display: none;
+    font-size: 2em;
+
+    display: flex;
+    display: none;
+
+    width: 46%;
+    margin-bottom: 20px;
+    margin-left: 1%;
+    padding: 20px;
+    padding-left: 20px;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: #fff;
+    border-radius: 20px;
+    background: blue;
+
+    justify-content: center;
+    align-items: center;
 }

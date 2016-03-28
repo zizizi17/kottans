@@ -48,7 +48,7 @@ $(document).ready(function(){
 				url: "http://pokeapi.co/api/v1/pokemon/" + id,
 				beforeSend: function(){
 					$('.show_loader').show();
-					$('.show').css("top", $(window).scrollTop());
+					$('.show').css("top", $(window).scrollTop()+"px");
 				},
 				dataType: "json",
 				cache: true,
