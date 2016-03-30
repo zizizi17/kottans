@@ -11,24 +11,98 @@
 		<h1>Pokedex</h1>
 	</header>
 	<main class="content">
-		<ul class="pokemon_list">
-			
-		</ul>
-			
+		<ul class="pokemon_list"></ul>
 		
-		<div class="show">
-			
-		</div>
+		<script id="show-template" type="text/x-handlebars-template">
+			<div class="show">
+				<img src="http://pokeapi.co/media/img/{{national_id}}.png" class='show_img'>;	
+				<h1 class='show_heading'>{{name}} #(000 + {{id}})</h1>;
+					<div class='show_wrapper'>
+					
+						<div class='row'>
+							<span class='show_type key'>Type</span><span class='show_type value'>{{this.types.name}}</span>
+						</div>
+						<div class='row'>
+							<span class='show_attack key'>Attack</span><span class='show_attack value'>{{attack}}</span>
+						</div>
+						<div class='row'>
+							<span class='show_defense key'>Defense</span><span class='show_defense value'>{{defense}}</span>
+						</div>
+						<div class='row'>
+							<span class='show_hp key'>HP</span><span class='show_hp value'>{{hp}}</span>
+						</div>
+						<div class='row'>
+							<span class='show_spAtk key'>SP Attack</span><span class='show_spAtk value'>{{sp_atk}}</span>
+						</div>
+						<div class='row'>
+							<span class='show_spDef key'>SP Defense</span><span class='show_spDef value'>{{sp_def}}</span>
+						</div>
+						<div class='row'>
+							<span class='show_speed key'>Speed</span><span class='show_speed value'>{{speed}}</span>
+						</div>
+						<div class='row'>
+							<span class='show_weight key'>Weight</span><span class='show_weight value'>{{weight}}</span>
+						</div>
+						<div class='row'>
+							<span class='show_moves key'>Total moves</span><span class='show_moves value'>{{moves.length}}</span></div>
+					</div>
+			</div>
+		</script>
 	</main>
 
 	<a href="#" class="next_page">Load More</a>
-	<div class="loader_wrapper">
-		<img src="721.gif" alt="" class="loader">
-		
-	</div>
 	
+	<script id="pokemon-template" type="text/x-handlebars-template">
+		<li class='pokemon_list-item' data-id="{{national_id}}">
+			<img src="http://pokeapi.co/media/img/{{national_id}}.png" class="pokemon_item-img">
+			<h3 class='pokemon_list-heading'>{{name}}</h3>
+			<ul class='pokemon_list-skills'>
+				{{#each this.types}}
+				<li class='pokemon_list-skills-item'>{{this.name}}</li>
+				{{/each}}
+			</ul>
+		</li>
+	</script>
+
+
+	<script id="show-template" type="text/x-handlebars-template">
+	<div class="show">
+		<img src="http://pokeapi.co/media/img/{{national_id}}.png" class='show_img'>;	
+		<h1 class='show_heading'>{{name}} #(000 + {{id}})</h1>;
+			<div class='show_wrapper'>
+			
+				<div class='row'>
+					<span class='show_type key'>Type</span><span class='show_type value'>{{this.types.name}}</span>
+				</div>
+				<div class='row'>
+					<span class='show_attack key'>Attack</span><span class='show_attack value'>{{attack}}</span>
+				</div>
+				<div class='row'>
+					<span class='show_defense key'>Defense</span><span class='show_defense value'>{{defense}}</span>
+				</div>
+				<div class='row'>
+					<span class='show_hp key'>HP</span><span class='show_hp value'>{{hp}}</span>
+				</div>
+				<div class='row'>
+					<span class='show_spAtk key'>SP Attack</span><span class='show_spAtk value'>{{sp_atk}}</span>
+				</div>
+				<div class='row'>
+					<span class='show_spDef key'>SP Defense</span><span class='show_spDef value'>{{sp_def}}</span>
+				</div>
+				<div class='row'>
+					<span class='show_speed key'>Speed</span><span class='show_speed value'>{{speed}}</span>
+				</div>
+				<div class='row'>
+					<span class='show_weight key'>Weight</span><span class='show_weight value'>{{weight}}</span>
+				</div>
+				<div class='row'>
+					<span class='show_moves key'>Total moves</span><span class='show_moves value'>{{moves.length}}</span></div>
+			</div>
+	</div>
+	</script>
 
 	<script   src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="   crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 	<script src="main.js"></script>
 </body>
 </html>

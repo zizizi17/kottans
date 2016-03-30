@@ -13,7 +13,6 @@ $(document).ready(function(){
 	});
 
 	function loadData(data) {
-		$(".loader").hide(); 
 		appendData(data);
 		$('.main_header').show();
 		$('.next_page').css("display", "flex");
@@ -21,20 +20,28 @@ $(document).ready(function(){
 
 	function appendData(data){
 		currentData = data;
-		for(var i=0; i<currentData.objects.length; i++) {
-
-			var item = "<li class='pokemon_list-item' data-id=" + currentData.objects[i].national_id + ">";
-				item += 	'<img src="http://pokeapi.co/media/img/' + currentData.objects[i].national_id + '.png" class="pokemon_item-img">';
-				item += 	"<h3 class='pokemon_list-heading'>" + currentData.objects[i].name + "</h3>";
+		$.each(currentData.objects, function(index, element) {
+			var source = $("#pokemon-template").html();
+			var template = Handlebars.compile($.trim(source));
+			var output = template(element);
+			$('.pokemon_list').append(output);
+			/*var item = "<li class='pokemon_list-item' data-id=" + element.national_id + ">";
+				item += 	'<img src="http://pokeapi.co/media/img/' + element.national_id + '.png" class="pokemon_item-img">';
+				item += 	"<h3 class='pokemon_list-heading'>" + element.name + "</h3>";
 				item += 	"<ul class='pokemon_list-skills'>";
-			for(var j = 0; j<currentData.objects[i].types.length; j++) {
-				item += "		<li class='pokemon_list-skills-item'>" + currentData.objects[i].types[j].name + "</li>";
+			for(var j = 0; j< element.types.length; j++) {
+				item += "		<li class='pokemon_list-skills-item'>" + element.types[j].name + "</li>";
 			}
 				item += 	"</ul>";
 				item += "</li>";
-			$('.pokemon_list').append(item);
-		};
-	}
+			$('.pokemon_list').append(item);*/
+		});
+	};
+
+		/*for(var i=0; i<currentData.objects.length; i++) {
+
+			
+	}*/
 
 	$("body").on("click", ".pokemon_list-item", function(){
 		var $this = $(this);
@@ -44,22 +51,20 @@ $(document).ready(function(){
 			type: "GET",
 			url: "http://pokeapi.co/api/v1/pokemon/" + id,
 			beforeSend: function(){
-				$('.show_loader').show();
 				$('.show').css("top", $(window).scrollTop()+"px");
 			},
 			dataType: "json",
 			cache: true,
-			success: loadPokemon
+			success: showCurrentPokemon
 		});
-		
-		function loadPokemon(currentPokemon) {
-			$('.show_loader').hide();
-			showCurrentPokemon(currentPokemon);
-		}	
 
 		function showCurrentPokemon(currentPokemon) {
-			var show = "";
-			show += "<img src='721.gif' class='show_loader' style='display: none'>"
+			var source = $("#show-template").html();
+			var template = Handlebars.compile($.trim(source));
+			var output = template(currentPokemon);
+			console.log(output)
+			$("#show-template").html(output);
+			/*var show = "";
 			show += "<img src=" + $this.find('.pokemon_item-img').attr('src') + " class='show_img'>";	
 			show += "<h1 class='show_heading'>" + currentPokemon.name + " #" + ('000' + (indexEl+1)).slice(-3) + "</h1>";
 			show += "<div class='show_wrapper'>"
@@ -76,15 +81,13 @@ $(document).ready(function(){
 			show += "<div class='row'><span class='show_speed key'>Speed</span><span class='show_speed value'>" + currentPokemon.speed + "</span></div>";
 			show += "<div class='row'><span class='show_weight key'>Weight</span><span class='show_weight value'>" + currentPokemon.weight + "</span></div>";
 			show += "<div class='row'><span class='show_moves key'>Total moves</span><span class='show_moves value'>" + currentPokemon.moves.length + "</span></div>";
-			show += "</div>";
-			$('.show').html(show).css('border', '2px solid #000');
+			show += "</div>";*/
+			/*$('.show').html(show).css('border', '2px solid #000');*/
 		};
 	});
 
 	$('.next_page').on('click', function(e){
 		e.preventDefault();
-		$(".loader").show();
-		window.scrollTo(0,document.body.scrollHeight);
 		$.get("http://pokeapi.co" + currentData.meta.next, loadData);
 	});
 
