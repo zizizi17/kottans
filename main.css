@@ -1,199 +1,187 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: .75em;
 }
 
 .main_header {
-    display: block;
-    display: none;
+  display: block;
+  display: none;
 
-    width: 125px;
-    margin: auto;
+  width: 150px;
+  padding: 10px;
+  margin: auto;
 
-    border: 2px solid #000;
+  border: 2px solid #000;
 }
 
 .main_header > h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .content {
-    display: flex;
-
-    justify-content: flex-start;
+  display: flex;
+  justify-content: center;
 }
 
 .show {
-    min-width: 15%;
-    height: 100%;
-    margin-top: 16px;
-    margin-left: 5%;
-	position: relative;
-    flex: 0 0 30%;
+  min-width: 15%;
+  height: 100%;
+  margin-top: 16px;
+  position: relative;
+  flex: 0 2 25%;
 }
 
 .show_wrapper {
-    padding: 10px;
+  padding: 10px;
 }
 
 .show_heading {
-    margin: 0;
+  margin: 0;
 
-    text-align: center;
-    word-wrap: break-word;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .show_img {
-    display: block;
+  display: block;
 
-    width: 50%;
-    min-width: 120px;
-    height: 50%;
-    margin: auto;
+  width: 50%;
+  min-width: 120px;
+  height: 50%;
+  margin: auto;
 }
 
 .row {
-    display: flex;
+  display: flex;
+  border: 2px solid #000;
 
-    border: 2px solid #000;
-
-    justify-content: flex-start;
-    flex-flow: row;
+  justify-content: flex-start;
+  flex-flow: row;
 }
 
 .row:nth-of-type(2n) {
-    border-top: 0;
-    border-bottom: 0;
+  border-top: 0;
+  border-bottom: 0;
 }
 
 .row > span {
-    text-align: center;
+  text-align: center;
 }
 
 .row > .key {
-    border-right: 2px solid #000;
-
-    flex: 0 1 70%;
+  border-right: 2px solid #000;
+  line-height: 100%;
+  flex: 0 1 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .value::first-letter {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .row > .value {
-    max-width: 30%;
+  max-width: 30%;
 
-    word-wrap: break-word;
+  word-wrap: break-word;
 
-    flex: 0 1 30%;
+  flex: 0 1 30%;
 }
 
 .pokemon_list {
-    display: flex;
+  display: flex;
 
-    padding-left: 20px;
+  padding-left: 20px;
 
-    list-style: none;
+  list-style: none;
 
-    flex: 0 0 50%;
-    justify-content: space-between;
-    flex-flow: row wrap;
+  flex: 0 0 40%;
+  justify-content: space-between;
+  flex-flow: row wrap;
 }
 
 .pokemon_list-item {
-    display: flex;
+  display: flex;
 
-    min-width: 150px;
-    margin-right: 3%;
-    margin-bottom: 20px;
+  min-width: 150px;
+  margin-right: 3%;
+  margin-bottom: 20px;
 
-    border: 2px solid #000;
+  border: 2px solid #000;
 
-    flex: 0 2 28%;
-    flex-flow: column;
-    cursor: pointer;
+  flex: 0 2 28%;
+  flex-flow: column;
+  cursor: pointer;
 }
 
 
 
 .pokemon_item-img {
-    width: 120px;
-    min-width: 120px;
-    height: 120px;
-    margin: 0 auto;
+  width: 120px;
+  min-width: 120px;
+  height: 120px;
+  margin: 0 auto;
 }
 
 .pokemon_list-heading {
-    margin: 0 0 20px 0;
+  margin: 0 0 20px 0;
 
-    text-align: center;
+  text-align: center;
 }
 
 .pokemon_list-skills {
-    display: flex;
+  display: flex;
 
-    margin-bottom: 15px;
-    padding-left: 15px;
+  margin-bottom: 15px;
+  padding-left: 15px;
 
-    list-style: none;
+  list-style: none;
 
-    flex-flow: row;
-    justify-content: flex-start;
+  flex-flow: row;
+  justify-content: flex-start;
 }
 
 .pokemon_list-skills-item {
-    margin-right: 20px;
-    padding: 5px;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
+  margin-right: 20px;
+  padding: 5px;
+  background: #eee;
+  border: 1px solid rgb(221,221,221);
+  color: #000;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 45px 26px 300px -92px rgba(0,0,0,0.37);
+  -moz-box-shadow: inset 45px 26px 300px -92px rgba(0,0,0,0.37);
+  box-shadow: inset 45px 26px 300px -92px rgba(0,0,0,0.37);
 }
 
 .pokemon_list-skills-item::first-letter {
-    text-transform: uppercase;
-}
-
-.loader_wrapper {
-    width: 47%;
-    padding-left: 20px;
-}
-
-.loader {
-    display: block;
-
-    margin: auto;
-}
-
-.show_loader {
-    position: absolute;
-    bottom: -150px;
-    right: 40%;
-}
-
-.nexp_page-wrapper {
-    width: 60%;
+  text-transform: uppercase;
 }
 
 .next_page {
-    font-size: 2em;
+  font-size: 2em;
 
-    display: flex;
-    display: none;
+  display: flex;
+  display: none;
 
-    width: 46%;
-    margin-bottom: 20px;
-    margin-left: 1%;
-    padding: 20px;
-    padding-left: 20px;
+  width: 36%;
+  margin-bottom: 20px;
+  margin-left: 18%;
+  padding: 20px;
+  padding-left: 20px;
 
-    text-align: center;
-    text-decoration: none;
+  text-align: center;
+  text-decoration: none;
 
-    color: #fff;
-    border-radius: 20px;
-    background: #008cff;
+  color: #fff;
+  border-radius: 20px;
+  background: #008cff;
 
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
