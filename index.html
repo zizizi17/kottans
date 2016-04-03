@@ -9,7 +9,7 @@
 	<header class="main_header">
 		<h1>Pokedex</h1>
 	</header>
-	<div class="navigation">
+	<!-- <div class="navigation">
 		<select>
 			<option value="normal">Normal</option>
 			<option value="water">Water</option>
@@ -32,12 +32,17 @@
 		</select>
 		<button class="sort">Sort</button>
 		<button class="reset">Reset</button>
-	</div>
+	</div> -->
+
 	<main class="content">
 		<ul class="pokemon_list"></ul>
-		<div class="show"></div>
+		<div class="show">
+		</div>
 	</main>
-	<a href="#" class="next_page">Load More</a>
+	<div class="nav_buttons">
+		<img class="loader" src="default.svg" alt="">
+		<a href="#" class="next_page">Load More</a>
+	</div>
 	
 	<!-- Template for pokemon_card !-->	
 	<script id="pokemon-template" type="text/x-handlebars-template">

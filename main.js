@@ -9,8 +9,7 @@ $(document).ready(function(){
 		dataType: "json",
 		beforeSend: function() {
 			$('.main_header').hide();
-			$('.next_page').hide();
-			
+			$('.next_page').hide();	
 		},
 		cache: true,
 		success: loadData
@@ -20,11 +19,17 @@ $(document).ready(function(){
 		appendData(data);
 		$('.main_header').show();
 		$('.navigation').show();
+		$('.loader').hide();
 		$('.next_page').css("display", "flex");
 	}
 	//function for taking data from server and make pokemon_card
 	function appendData(data){
 		currentData = data;
+		$.each(currentData.objects, function(i, el){
+			el.types.sort(function(a,b){
+				return a.name > b.name ? 1 : -1;
+			});
+		});
 		$.each(currentData.objects, function(index, element) {
 			var source = $("#pokemon-template").html();
 			var template = Handlebars.compile($.trim(source));
@@ -47,6 +52,7 @@ $(document).ready(function(){
 			url: "http://pokeapi.co/api/v1/pokemon/" + id,
 			beforeSend: function(){
 				$('.show').css("top", $(window).scrollTop()+"px");
+				$(".show_loader").show();
 			},
 			dataType: "json",
 			cache: true,
@@ -72,29 +78,81 @@ $(document).ready(function(){
 			show += "<div class='row'><span class='show_speed key'>Speed</span><span class='show_speed value'>" + currentPokemon.speed + "</span></div>";
 			show += "<div class='row'><span class='show_weight key'>Weight</span><span class='show_weight value'>" + currentPokemon.weight + "</span></div>";
 			show += "<div class='row'><span class='show_moves key'>Total moves</span><span class='show_moves value'>" + currentPokemon.moves.length + "</span></div>";
+			show += "<img class='show_loader' src='default.svg'>"
 			show += "</div>";
-			$('.show').html(show).css('border', '2px solid #000');
+			$('.show').html(show).css('border', '2px solid #777');
+			$(".show_loader").hide();
 		};
 	});
 	//load another 12 pokemon cards
 	$('.next_page').on('click', function(e){
 		e.preventDefault();
+		$('body').scrollTop($(document).height());
+		$('.loader').show();
 		$.get("http://pokeapi.co" + currentData.meta.next, loadData);
 	});
 
-	$(".sort").on('click', function(){
-		var $allListElements = $('.pokemon_list > li');
-	    var $matchingListElements = $allListElements.filter(function(i, li){
-	        var listItemText = $(li).text().toLowerCase(), 
-	            searchText = $('select option:selected').text().toLowerCase();
-	        return ~listItemText.indexOf(searchText);
-	    });
+	$("body").on("click", ".pokemon_list-skills-item", function() {
+		skillToSortBy = $(this).html();
+		$('.pokemon_list-item').each(function() {
+			$(this).find('.pokemon_list-skills-item').each(function() {
+				if ($(this).html() == skillToSortBy) {
+					$(this).prependTo($(this).parent());
+				}
+			});
+		});
 
-	    $allListElements.hide();
-	    $matchingListElements.show();
-	});
-	
-	$('body').on('click', '.reset', function() {
-		$('.pokemon_list > li').show();
+		var _this = $(this);
+		var ul = $(".pokemon_list");
+		var arr = $.makeArray(ul.children("li"));
+
+		arr.sort(function(a, b) {
+		    var skillsA = concatList($(a).find(".pokemon_list-skills"));
+		    var skillsB = concatList($(b).find(".pokemon_list-skills"));
+
+		    if (skillsA == skillsB) {
+		    	var pokemonAName = $(a).find('.pokemon_list-heading').html();
+		    	var pokemonBName = $(b).find('.pokemon_list-heading').html();
+		    	return genericCompare(pokemonAName, pokemonBName);
+		    }
+
+		    if(skillsA.startsWith(skillToSortBy)) {
+		    	if(skillsB.startsWith(skillToSortBy)) {
+		    		return genericCompare(skillsA, skillsB)
+		    	} else {
+		    		return -1;
+		    	}
+		    } else {
+		    	if(skillsB.startsWith(skillToSortBy)) {
+		    		return +1;
+		    	} else {
+		    		return genericCompare(skillsA, skillsB)
+		    	}
+		    }
+		});
+
+		ul.empty();
+
+		$.each(arr, function() {
+		    ul.append(this);
+		});
 	})
 });
+
+	function genericCompare(a, b) {
+		if(a == b) {
+			return 0;
+		} else if (a > b) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	function concatList($list) {
+		var res = "";
+		$($list).children('li').each(function() {
+			res += $(this).html();
+		});
+		return res;
+	}
