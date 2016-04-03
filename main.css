@@ -144,6 +144,7 @@ select {
 
 
 .pokemon_item-img {
+<<<<<<< HEAD
   width: 120px;
   min-width: 120px;
   height: 120px;
@@ -228,4 +229,3 @@ select {
     display: block;
     margin: 0 auto;
 }
-
