@@ -234,4 +234,3 @@ $(document).ready(function(){
 		return res;
 	}
 
-})
