@@ -87,8 +87,8 @@ $(document).ready(function(){
 	//load another 12 pokemon cards
 	$('.next_page').on('click', function(e){
 		e.preventDefault();
-		$('body').scrollTop($(document).height());
 		$('.loader').show();
+		window.scrollTo(0,document.body.scrollHeight);
 		$.get("http://pokeapi.co" + currentData.meta.next, loadData);
 	});
 
