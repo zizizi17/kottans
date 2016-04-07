@@ -90,7 +90,6 @@ $(document).ready(function(){
 		$.get("http://pokeapi.co" + currentData.meta.next, loadData);
 	});
 
-	
 	$("body").on("click", ".pokemon_list-skills-item", function() {
 		$("html, body").animate({scrollTop: 0}, 500);
 		skillToSortBy = $(this).html();
@@ -138,7 +137,6 @@ $(document).ready(function(){
 		});
 	})
 });
-	
 
 	//functions for sorting elements
 	function genericCompare(a, b) {
