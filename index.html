@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<header class="main_header">
+		<a href="index.html">Pokedex</a>
+	</header>
+	<main class="content">
+		<ul class="pokemon_list"></ul>
+		<div class='show_header'> 
+			<div class="show">
+				
+			</div>
+
+		</div>
+	</main>
+	<div class="nav_buttons">
+		<img class="loader" src="default.svg" alt="">
+		<a href="#" class="next_page">Load More</a>
+	</div>
+	
+	<!-- Template for pokemon_card !-->	
+	<script id="pokemon-template" type="text/x-handlebars-template">
+		<li class='pokemon_list-item' data-id="{{national_id}}" data-type="{{#each this.types}}{{this.name}} {{/each}}">
+			<img src="http://pokeapi.co/media/img/{{national_id}}.png" class="pokemon_item-img">
+			<h3 class='pokemon_list-heading'>{{name}}</h3>
+			<ul class='pokemon_list-skills'>
+				{{#each this.types}}
+				<li class='pokemon_list-skills-item'>{{this.name}}</li>
+				{{/each}}
+			</ul>
+		</li>
+	</script>
+
+	<script   src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="   crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
