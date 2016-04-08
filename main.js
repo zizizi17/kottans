@@ -131,7 +131,7 @@ $(document).ready(function(){
 		});
 
 		ul.empty();
-
+		
 		$.each(arr, function() {
 		    ul.append(this);
 		});
